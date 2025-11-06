@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+  <h2>{{ title }}</h2>
+
+  <form method="get" class="mb-3 form-inline">
+    <div class="form-group">
+      <label for="q" class="mr-2">Фільтр за назвою:</label>
+      <input id="q" name="q" value="{{ query }}" placeholder="Введи назву..." class="form-control" style="max-width:300px;">
+    </div>
+    <button type="submit" class="btn btn-primary ml-2">Фільтрувати</button>
+  </form>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Назва (Part)</th>
+        <th>Кількість</th>
+        <th>Місце (Location)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in data %}
+      <tr>
+        <td>{{ item.pk }}</td>
+        <td>{% if item.part %}{{ item.part.name }}{% else %}-{% endif %}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{% if item.location %}{{ item.location.name }}{% else %}-{% endif %}</td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="4">Немає даних</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
