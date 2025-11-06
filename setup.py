@@ -1,11 +1,11 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
     name='inventree-custom-stock-plugin',
-    version='1.0',
+    version='1.0.1',
     description='Custom Stock View Plugin for InvenTree',
     author='Ellheim',
-    packages=find_packages(),
+    packages=['custom_stock_plugin'],
     include_package_data=True,
     install_requires=[],
 )
